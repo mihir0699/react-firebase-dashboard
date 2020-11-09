@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {firestore} from '../firebase/config';
 import { updateUserDoc} from '../firebase/users';
+import ProfileImage from './ProfileImage';
 const Profile = (props) => {
     const {user} = UserSession();
     const [isLoading, setLoading] = useState(false);
@@ -51,6 +52,8 @@ const Profile = (props) => {
   className="add-form-container"
   style={{ maxWidth: 960, margin: '50px auto' }}
 >
+<div className="ui grid stackable">
+        <ProfileImage id={params.id} />
   <form className={formClassname} onSubmit = {handleSubmit(onSubmit)}>
     <div className="fields">
       <div className="eight wide field">
@@ -120,6 +123,7 @@ const Profile = (props) => {
       Submit
     </button>
   </form>
+</div>
 </div>
     )
 }
